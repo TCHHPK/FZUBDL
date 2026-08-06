@@ -2,65 +2,27 @@
 
 ## 结构、配体选择性与常见应用
 
-### 1. FKBP 是什么？
-
-FKBP 是 **FK506-binding protein（FK506 结合蛋白）**的缩写，是一类 immunophilin（免疫亲和蛋白）。
-
-经典成员为：
-
-**FKBP12**
-
-FKBP12 具有 PPIase 活性，即：
-
-**Peptidyl-prolyl cis-trans isomerase activity**
-
-中文可称为：
-
-**肽基脯氨酰顺反异构酶活性**
-
-其功能是催化蛋白质中脯氨酸相关肽键的顺式与反式构象转换，因此可参与蛋白质折叠和构象调控。
-
-FKBP12 可与以下天然或经典配体结合：
-
-- FK506，也称 tacrolimus
-- Rapamycin，也称 sirolimus
-
+FKBP 是 **FK506-binding protein（FK506 结合蛋白）** 的缩写，
+是一类 immunophilin（免疫亲和蛋白）。
+经典成员：**FKBP12**
+FKBP12 具有 PPIase （**Peptidyl-prolyl cis-trans isomerase activity**）活性，
+即肽基脯氨酰顺反异构酶活性
+其功能是催化蛋白质中脯氨酸相关肽键的顺式与反式构象转换，
+因此可参与蛋白质折叠和构象调控。
+FKBP12 可与FK506（tacrolimus）Rapamycin（sirolimus）结合，
 FKBP 与这些配体形成复合物后，可进一步影响细胞信号通路。
-
----
 
 ### 2. FKBPv 是什么？
 
-FKBPv 通常是指经过工程化改造的：
+FKBPv 通常是指经过工程化改造的FKBP12（F36V）
+也就是 FKBP12 的第 36 位氨基酸由**Phenylalanine，Phe，F**
+突变为**Valine，Val，V**（可表示为**Phe36Val**或简写为**F36V**）
 
-**FKBP12（F36V）**
-
-也就是 FKBP12 的第 36 位氨基酸由：
-
-**Phenylalanine，Phe，F**
-
-突变为：
-
-**Valine，Val，V**
-
-突变可表示为：
-
-**Phe36Val**
-
-或简写为：
-
-**F36V**
-
-因此：
-
-- FKBP12 WT：第 36 位为 Phe。
-- FKBP12（F36V）／FKBPv：第 36 位为 Val。
-
+因此FKBP12 WT：第 36 位为 Phe。
+FKBP12（F36V）／FKBPv：第 36 位为 Val。
 这一突变会改变 FKBP12 配体结合口袋的形状和理化性质，因此常用于设计具有选择性的 chemical biology 工具系统。
 
----
-
-### 3. F36V 突变带来什么改变？
+### F36V 突变带来的改变
 
 #### 野生型 FKBP12
 
@@ -84,16 +46,10 @@ FKBPv 通常是指经过工程化改造的：
 #### 核心概念
 
 口袋微调 → 配体选择性改变
-
-这种设计通常称为：
-
-**Orthogonal binding，正交结合**
-
+这种设计通常称为**Orthogonal binding，正交结合**
 意思是工程化蛋白与工程化配体之间形成相对专一的配对，同时尽量减少对内源性野生型 FKBP 的影响。
 
----
-
-### 4. 配体选择性的比较
+### 配体选择性的比较
 
 #### 天然配体，例如 FK506
 
@@ -104,63 +60,16 @@ FKBPv 通常是指经过工程化改造的：
 
 - 对 WT FKBP12：通常尽量降低结合。
 - 对 FKBP12（F36V）：通过填补或利用 F36V 形成的新口袋，提高选择性结合能力。
+  > 因此，F36V 突变本身并不一定直接产生新的功能，而是提供了一个可以被专用小分子选择性识别的工程化结合位点。
 
-因此，F36V 突变本身并不一定直接产生新的功能，而是提供了一个可以被专用小分子选择性识别的工程化结合位点。
+### 常见应用：CID (后面提及)
 
----
+### 常见应用：dTAG／选择性蛋白降解
 
-### 5. 常见应用一：化学诱导二聚化
-
-Chemical-induced dimerization，简称：
-
-**CID**
-
-基本设计为：
-
-1. 将 FKBPv 分别融合至一个或多个目标蛋白。
-2. 加入可同时结合两个 FKBPv 的二价合成配体。
-3. 合成配体作为桥梁，使两个融合蛋白快速靠近或聚集。
-4. 通过空间接近控制目标蛋白的功能。
-
-可用于：
-
-- 控制信号通路启动
-- 诱导蛋白二聚或聚集
-- 改变蛋白定位
-- 控制受体活化
-- 控制蛋白复合体形成
-- 启动工程化细胞反应
-
-常见示例配体包括：
-
-- AP1903
-- AP20187
-
-具体配体名称及适用系统可能因实验设计和论文而不同。
-
----
-
-### 6. 常见应用二：dTAG／选择性蛋白降解
-
-基本组成包括：
-
-- 与 FKBPv 融合的目标蛋白
-- dTAG 双功能小分子
-- E3 ubiquitin ligase
-- Ubiquitin
-- Proteasome
+![alt text](image-2.png)
 
 过程如下：
-
-目标蛋白－FKBPv  
-＋ dTAG 分子  
-＋ E3 ligase，例如 CRBN 或 VHL  
-↓  
-形成目标蛋白－dTAG－E3 ligase 三元复合体  
-↓  
-目标蛋白被多聚泛素化  
-↓  
-由 proteasome 识别并降解
+![alt text](image-1.png)
 
 其中：
 
@@ -181,7 +90,7 @@ Chemical-induced dimerization，简称：
 
 ---
 
-### 7. FKBP 与 FKBPv 比较
+### FKBP 与 FKBPv 比较
 
 | 项目         | FKBP／FKBP12 WT                | FKBPv／FKBP12 F36V             |
 | ------------ | ------------------------------ | ------------------------------ |
@@ -191,15 +100,3 @@ Chemical-induced dimerization，简称：
 | 配体偏好     | FK506、rapamycin 等经典配体    | 针对 F36V 设计的选择性合成配体 |
 | 常见用途     | 基础生物学、蛋白折叠与药理研究 | 二聚化、蛋白降解及可控细胞工程 |
 | 研究场景     | 天然功能研究                   | 工具蛋白系统与化学生物学       |
-
----
-
-### 8. 重点总结
-
-1. FKBPv 本质上通常是 FKBP12 的 F36V 工程化突变体。
-2. F36V 表示第 36 位氨基酸由 Phe 突变为 Val。
-3. 该突变会改变配体结合口袋，为选择性合成配体提供识别空间。
-4. FKBPv 经常作为一个可由小分子控制的蛋白标签。
-5. FKBPv 可用于化学诱导二聚化、蛋白定位控制和 dTAG 蛋白降解。
-6. 在 dTAG 系统中，FKBPv 融合目标蛋白，小分子负责将目标蛋白招募至 E3 ligase。
-7. FKBPv 是 chemical biology、细胞工程和急性蛋白功能研究中常用的工具模块。

@@ -1,11 +1,5 @@
 ## 分子生物学基础概念(列出为剩余未学习)
 
-### Chemically Induced Dimerization（化学诱导二聚化，CID）
-
-本系统的核心技术平台。原理：一个二价小分子（AP20187，属于 FK1012 类似物）两端各能抓住一个 FKBP，于是把两个融合蛋白拉到一起。这是一个通用的"用小分子控制蛋白靠近"的开关技术，可推广到很多"想在特定时刻打开某功能"的场景。
-
-FK1012 / AP20187：这类"二聚化药物"（dimerizer）由 Ariad Pharmaceuticals 提供。文中注射剂量约 0.2 µg/g 体重，每 3 天一次，腹腔注射（intraperitoneal, i.p.）。
-
 ### Fusion protein（融合蛋白）
 
 把两段不同蛋白的编码序列在同一个阅读框（in-frame）内拼接，翻译出一条"二合一"的蛋白。这里是 caspase 8 – FKBP – FKBP（带两个 FKBP 以便二聚），并额外挂上一个 FLAG 标签 便于检测。
