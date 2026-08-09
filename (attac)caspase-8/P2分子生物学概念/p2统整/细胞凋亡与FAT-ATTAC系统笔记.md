@@ -1,5 +1,21 @@
 # 细胞凋亡机制与 FAT-ATTAC 诱导性脂肪细胞消融系统笔记
 
+> **笔记信息 / Note Information**
+>
+> **作者 / Author**：蔡靖熹
+> 福州大学 数据科学与大数据技术专业 本科生
+> Fuzhou University, Data Science and Big Data Technology, Undergraduate
+>
+> **内容说明**：本笔记由本人根据学习整理撰写。
+>
+> **参考资料**：
+
+> **AI辅助说明**：本笔记 Markdown 排版结构与逻辑整理借助 AI 工具辅助完成，AI 未参与专业内容的判断与生成，核心知识内容以本人撰写为准。如有内容错误，责任由本人承担。
+>
+> **联系方式 / Contact**：
+> tchinchina@outlook.com
+> cjx941008@qq.com
+
 ## 目录
 
 1. [Apoptosis（细胞凋亡，程序性细胞死亡）](#1-apoptosis细胞凋亡程序性细胞死亡)
