@@ -346,7 +346,8 @@
 - Functional diversity:reflected by a rich diversity of expression patterns by coding and non-coding splice variants
 - Phenotypic complexity:preceded multicellularity in evolution,aiding in the development of multicellular organisms.
 - Human diseases:caused by RNA mis-splicing
-  > Alternative splicing of Drosophila Dscam generates axon guidance receptors that exhibit isoform-specific homophilic binding. Cell 2004
+
+> Alternative splicing of Drosophila Dscam generates axon guidance receptors that exhibit isoform-specific homophilic binding. Cell 2004
 
 #### CpG岛（CpG island）
 
@@ -359,6 +360,203 @@
 
 ## 基因组测序 DNA-seq
 
+### 全外显子组测序(Whole exome sequencing,WES)
+
+- WES is a genomic technique for sequencing all of the protein-coding regions of genes in a genome(Wikipedia)
+- 利用序列捕获技术将【全基因组的外显子区域DNA】捕获富集后进行高通量测序，能够直接发现与蛋白质功能变异相关的遗传变异SNP
+- 相比全基因组测序，外显子组测序只需针对外显子区域的DNA即可，覆盖度更深、数据准确性更高，更加简便、经济、高效
+- 可用于寻找复杂疾病如癌症、糖尿病、肥胖症的致病基因和易感基因等的研究
+
+### 全基因组测序（Whole genome sequencing, WGS）
+
+- WGS is the process of determining the entirety, or nearly the entirety, of the DNA sequence of anorganism’s genome at a single time（Wikipedia）
+- 对基因组整体进行高通量测序，分析不同个体间的差异，同时完成SNP及基因组结构注释
+- 覆盖全基因组，包含外显子测序不能得到的更多信息，在鉴定SNP、插入和缺失突变（Indel）时更有优势
+
+### 全基因组重测序（Whole genome re-sequencing, WGRS）
+
+- 对已知参考基因组和注释的物种进行不同个体间的WGS，并在此基础上对个体或群体进行差异性分析，鉴定出与某类表型相关的SNP
+- 覆盖全基因组，是WGS在不同样本上的重复
+
+### Read 比对（mapping）
+
+- reads比对指的是将reads匹配到参考基因组上
+- 当reads经过处理满足一定的质量标准后，需要将其比对到参考基因组上
+- 截止到目前，研究人员已经开发出了多种比对程序及软件对数以百万记的短读段进行有效的比对
+- 常用工具：Bowtie，Bowtie2，BWA，MAQ
+  ![alt text](image-44.png)
+
+#### 算法BWT
+
+- BWT（Burrows-Wheeler Transform） 是一种用于数据压缩和字符串匹配的算法。
+- 由 Michael Burrows 和 David Wheeler 于 1994 年提出。
+- BWT 的核心思想是通过对字符串进行重排，使其更易于压缩，同时保留原始字符串的所有信息。
+- BWT 在生物信息学中被广泛应用于 短读段比对（如将测序 reads 比对到参考基因组），尤其是在 Bowtie、BWA 等比对工具中
+
+- 分为编码和解码两部分：
+  - 编码后，原始字符串中的相似字符会处在比较相邻的位置；
+  - 解码就是将编码后的字符串重新恢复成原始字符串的过程
+- BWT的一个特点就是经过编码后的字符串可以完全恢复成原始字符串
+
+##### BWT编码
+
+1. 输入一个字符串8,假设其中所有字符都介于a-z之间。
+2. 在s的末尾加上一个标记字符，该字符要比s中的所有字符都要小。比如$字符。这样将末尾加上标记的新字符串记为s。
+3. 重复地将s中的最后一个字符转移到开头，每转移一次就得到一个新的字符串。
+4. 将上一步得到的所有新字符串从小到大排序，排序后的字符串数组记为M。
+5. M中每个字符串的第一个字符构成F列，M中每个字符串的最后一个字符构成L列。
+6. 输出L列。
+   ![alt text](image-45.png)
+
+##### BWT解码
+
+1. 输入L列。
+2. 对L列进行从小到大排序得到F列。
+3. L列的第一个字符是原始字符串的最后一个字符。
+4. 根据L列的字符Li找到F列中的相同字符Fj，然后得到Fj所在行的最后一个字符L。将L记录下来。重复上面一步，直到Fj等于标记字符为止。
+5. 按照上述步骤找到的各个Lj进行反向排列，得到字符串r。
+6. 输出字符串r。
+   ![alt text](image-47.png)
+
+#### 比对文件格式
+
+- reads 比对的结果文件为SAM(sequence alignment map)文件
+- SAM 文件由注释信息(header section)和比对结果 (alignment section)两部分组成。
+- 注释信息必须处于对齐部分之前，以“@”符号开始，与比对结果区分开来。
+- 注释信息用不同的tag表示不同的信息，主要有以下几种格式：
+  - @HD，说明符合标准的版本、对比序列的排列顺序。VN是格式版本；SO表示比对排序的类型，有
+    unknown（default），unsorted，queryname和coordinate几种。
+  - @SQ，参考序列说明。SN：参考序列名字。LN：参考序列长度。这些参考序列决定了比对结果sort的顺
+    序
+  - @RG，比对上的序列（read）说明。Read Group。1个sample的测序结果为1个Read Group。
+  - @PG，使用的程序说明。比对所使用的软件及版本，例如hisat2、bwa等
+  - @CO，任意的说明信息
+- 比对结果部分由 11个顺序固定的必需字段及相应的可选字段组成
+  ![alt text](image-48.png)
+- SAM 文件的二进制形式是 BAM 文件，相当于压缩的 SAM 文件。
+- 对比对结果文件进行分析和编辑：SAMtools软件
+- 比对结果的可视化：IGV(integrative genomics viewer) 、Genome Maps 和 Savant
+
+#### 比对结果评估
+
+- reads 匹配百分比：用来评估总测序精确度和 DNA污染程度
+- reads 随机性分布：以reads 在参考基因组上的分布来评估RNA打断的随机性程度，reads在参考基因组上分布比较均匀说明打断随机性较好。
+- 匹配reads的GC含量与PCR偏差相关。
+- 评估工具：
+  - RSeQC
+  - Qualimap
+
 ## 基因组变异
+
+### 自然变异
+
+#### 全基因组复制（Whole genome duplication）
+
+日本遗传学家与演化生物学家Susumu Ohno(1928-2000)在1970年提出
+
+- 基因复制(Gene Duplication)
+- 全基因组复制(Whole GenomeDuplication,WGD)
+- 脊椎动物两轮WGD假说(2 rounds of WGD),2R hypothesis
+- 新遗传物质产生的主要机制
+- 基因功能分化
+- 基因丢失
+- 新物种形成
+
+> 大多数真核生物是二倍体(diploid) 以下为多倍体（Polyploid）
+> Monoploid (one copy)
+> Diploid (two copies)有性生殖物种
+> Hexaploid(six copies)小麦
+> Heptaploid(seven copies)
+> Octaploid (eight copies)草莓
+> Nonaploid (nine copies)
+> Decaploid (ten copies)
+> Triploid (three copies)无籽西瓜
+> Tetraploid (four copies)马铃薯
+> Pentaploid (five copies)
+
+#### 2R全基因组复制
+
+![alt text](image-49.png)
+
+#### 整倍体基因组加倍
+
+- 染色体组：一组完整的非同源染色体，在形态和功能上各不相同且互相协助，携带着控制生物生长、发育、遗传和变异的全部信息
+- 整倍体（Euploid）变异：以染色体组（全部染色体）为单位进行复制或减少
+- 多倍体（Polyploid）： 具有三个或三个以上染色体组的整倍体（普通小麦是六倍体，6x=42）
+  - 同源多倍体（autopolyploid）：增加的染色体组来自同一物种
+  - 异源多倍体（allopolyploid）：增加的染色体组来自不同物种，生物进化、新物种形成的重要因素
+  - 古多倍体（Paleopolyploidy）：在进化历史中经历了基因组多倍化，但随后通过基因的丢失和重排重新二倍化
+  - 新多倍体（Neopolyploidy）：新形成的，基因组未发生重排，仍然保持多倍体形式的物种
+- 全基因组复制：又称多倍化事件，在植物、动物、真菌中都有发生
+
+#### 多倍体
+
+- 多倍体：具有2套以上染色体组的细胞或个体
+- 染色体加倍：可自然发生，也可人工诱发（秋水仙素等）
+- 显花植物中有许多物种是多倍体
+- 单子叶植物中多倍体物种占90%
+
+无籽西瓜三倍体：二倍体（2x=22）+四倍体（二倍体WGD，4x=44）
+
+- 同源多倍体—少见：月见草（夜来香）
+- 异源多倍体—常见：新种产生的重要途径，如西瓜、小麦、香蕉等 -远缘杂交：杂交种后代育性低，在减数分裂中染色体无法配对。经过染色体加倍，解决了配对的问题，改进了育性。
+
+![alt text](image-50.png)
+
+#### 全基因组复制的证据
+
+![alt text](image-51.png)
+
+#### 全基因组复制（WGD）
+
+![alt text](image-52.png)
+
+> 异源八倍体的小黑麦是我国鲍文奎用普通小麦和黑麦杂交，并经全基因组加倍而后培育而成。
+> ![alt text](image-53.png)
+
+#### 染色体异常（Chromosome abnormality）
+
+- 数量变异(Numerical Variation):非整倍体/异倍体(aneuploid)变异，染色体组非成倍增加或减少，只增加或减少一条或几条
+  - 缺失：染色体数目减少
+  - 增加：染色体数目增加
+
+- 结构变异(Structural Variation)
+  - 拷贝数变异(CNV)
+    - 插入(Insertion)
+
+    - 缺失(Deletion)
+
+    - 重复(Duplication)
+
+  - 倒位(Inversion)
+  - 易位(Translocation)
+
+#### 染色体结构变异
+
+##### 倒位（Inversion）
+
+- 倒位的类型：
+  - 臂内倒位Paracentric
+  - 臂间倒位Pericentric
+- 倒位是物种进化的重要因素之一，可能导致新物种的产生
+
+> ![alt text](image-54.png)
+> https://en.wikipedia.org/wiki/Chromosomal_inversion
+
+##### 易位（Translocation）
+
+![alt text](image-55.png)
+
+#### 染色体融合（Fusion）
+
+![alt text](image-56.png)
+
+#### 基因获得和缺失（Gene gain and loss）
+
+#### 碱基突变/点突变（Point mutation）
+
+### 人工变异
+
+#### 基因编辑（Gene editing）
 
 ## 基因组注释
