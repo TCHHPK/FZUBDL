@@ -19,7 +19,7 @@
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 
-- 在测序仪进行测序的时候，会自动根据荧光信号的强弱给出一个参考的测序错误概率（error probility，P）。
+- 在测序仪进行测序的时候，会自动根据荧光信号的强弱给出一个参考的测序错误概率（error probability，P）。
 - P值肯定是越小越好。
 
 ```
@@ -89,10 +89,8 @@
 横轴是1 - 101 bp；
 纵轴是百分比图中四条线代表A T C G在每个位置平均含量。
 
-- WARN：任一位置的A/T比例或者G/C
-  比例相差超过10%
-- FAIL：任一位置的A/T比例或者G/C比
-  例相差超过20%
+- WARN：任一位置的A/T比例或者G/C比例相差超过10%
+- FAIL：任一位置的A/T比例或者G/C比例相差超过20%
 
 ![alt text](image-10.png)
 
@@ -173,7 +171,7 @@
 
 基因组：A T G C四种，脱氧核苷酸排列组成
 人类基因组是由30亿个碱基（base pair）组成
-30亿个碱基 = 3,000,000,000 = 3x109 = 3Gbp
+30亿个碱基 = 3,000,000,000 = 3x10^9 = 3Gbp
 ![alt text](image-20.png)
 ![alt text](image-21.png)
 
@@ -188,7 +186,7 @@
 
 - 病毒基因组是由核酸构成，核酸是病毒遗传和感染的物质基础。
 - 迄今所发现的各种病毒仅含有一种核酸，要么是DNA，要么是RNA。
-- 地球上病毒数量极多，文献报道总量达1031，已知的仅有5000 余种。
+- 地球上病毒数量极多，文献报道总量达10^31，已知的仅有5000 余种。
 - 研究病毒基因组的核酸组成和基因组结构，可揭示病毒基因组转录、复制和表达的调控机制，阐明病毒感染和致病的分子基础。
 
 ##### 分类
@@ -294,9 +292,9 @@
 
 #### 什么是基因
 
-• One gene – one enzyme (Beadle & Tatum 1940):“Every gene encodes the information for one enzyme”
-• One gene – one protein:“One gene contains information for one protein (structural proteins included) one gene – one polypeptide
-• Current definition: A piece of DNA (or in some cases RNA) that contains the primary sequence to produce a functional biological gene product (RNA, protein).
+- One gene – one enzyme (Beadle & Tatum 1940):“Every gene encodes the information for one enzyme”
+- One gene – one protein:“One gene contains information for one protein (structural proteins included) one gene – one polypeptide
+- Current definition: A piece of DNA (or in some cases RNA) that contains the primary sequence to produce a functional biological gene product (RNA, protein).
 
 > 储存有功能的蛋白质多肽链或RNA序列信息，以及表达这些信息所必需的全部核苷酸序列所构成的遗传单位。
 
@@ -400,9 +398,9 @@
 
 ##### BWT编码
 
-1. 输入一个字符串8,假设其中所有字符都介于a-z之间。
-2. 在s的末尾加上一个标记字符，该字符要比s中的所有字符都要小。比如$字符。这样将末尾加上标记的新字符串记为s。
-3. 重复地将s中的最后一个字符转移到开头，每转移一次就得到一个新的字符串。
+1. 输入一个字符串,假设其中所有字符都介于a-z之间。
+2. 在s的末尾加上一个标记字符，该字符要比$中的所有字符都要小。比如$字符。这样将末尾加上标记的新字符串记为s。
+3. 重复地将$中的最后一个字符转移到开头，每转移一次就得到一个新的字符串。
 4. 将上一步得到的所有新字符串从小到大排序，排序后的字符串数组记为M。
 5. M中每个字符串的第一个字符构成F列，M中每个字符串的最后一个字符构成L列。
 6. 输出L列。
@@ -553,10 +551,279 @@
 
 #### 基因获得和缺失（Gene gain and loss）
 
+- 基因家族（Gene family）：来源于同一个祖先，通过复制（Duplication）而产生两个或更多的拷贝而构成的一组同源基因（Homologous genes，duplicates）
+- 复制类型：基因复制、基因家族复制
+- 家族成员：经过突变（Mutation）和分化（Divergence），在结构和功能上具有明显的相似性，各自具有不同的表达调控模式
+- 染色体位置：分散在同一染色体的不同位置，或者存在于不同染色体上
+
+##### 球蛋白基因家族
+
+球蛋白(Globin)超基因家族：脊椎动物氧呼吸代谢过程，主要包括血红蛋白(Hemoglobin)、肌红蛋白(Myoglobin)
+![alt text](image-57.png)
+
+##### 血红蛋白基因家族
+
+![alt text](image-58.png)
+
+##### 同源基因：直系同源、旁系同源
+
+- 同源基因：直系同源、旁系同源
+
+- 直系同源基因(Ortholog/Orthologous gene):由物种分化所产生同源基因。基因功能保守，进化缓慢，且序列变化速度与进化距离相当，大多数直系同源基因功能相同或相近，调控途径也相似
+
+- 旁系同源基因(Paralog/Paralogous gene):由同一物种内的基因复制而产生的同源基因。基因复制后，其中一条基因丢失或发生沉默，都能促使旁系同源基因分化，产生新特性或新功能
+  ![alt text](image-59.png)
+
+##### Hox基因家族
+
+- 同源异形基因(Hox基因)是生物体内一类重要的发育调控基因家族，专门调控生物形体，一旦这些基因发生突变，就会使身体的一部分变形，在个体胚胎发育中起着重要调控作用。
+- Hox基因是生物体形体结构“建筑师”,大多数动物皆拥有类似的Hox基因排列方式、产物与作用方式，经历了几十亿年的长期演化但功能类似。
+
+- 进化上高度保守，在染色体上排列成簇，排列顺序与它们所控制的胚胎发育密切相关，称之为共线性规则。这些基因按顺序活化，保证器官以及各部位骨骼依据发育模式，前后轴(anterior-posterior axis,从头到脚)排列。
+  ![alt text](image-60.png)
+
+###### WGD引发基因复制
+
+![alt text](image-61.png)
+
+###### 多物种Hox基因
+
+![alt text](image-62.png)
+
+##### 序列插入
+
+- 串联重复序列（Tandem repeat）：以相对恒定的短序列为重复单位，首尾相接，串联连接形成的重复序列，又称卫星DNA (Satellite DNA)
+  - 小卫星DNA（Minisatellite）
+  - 微卫星DNA（Microsatellite），又称短串联重复（Short tandem repeat，STR），简单序列重复（Simple sequence repeat，SSR）
+- 散在重复序列（Interspersed repeat）——转座子（Transposon）：是一种跳跃基因，可以由基因组的一个位置跳跃（插入）到另一个位置
+  - I型转座子：又叫反转座子（retrotransposon）：“复制-粘贴”型转座元件，通过RNA的媒介作用，通过RNA的反转录获得DNA，从而转移到其他基因组位置。包括：长末端重复LTR（long terminal repeat）、LINE/SINE（long/short interspersed nuclearelement ）
+  - II型转座子：也叫做转座子（transposon）：“剪切-粘贴”型转座元件。在转座酶的作用下，II型转座子从原来的位置解离下来，再重新插入到染色体上
+
+##### 散在重复序列：转座子
+
+![alt text](image-63.png)
+
 #### 碱基突变/点突变（Point mutation）
 
-### 人工变异
+#### 基因突变
 
-#### 基因编辑（Gene editing）
+- 突变类型
+  - 替换：ATG=>ACG,假如某单核苷酸替换在群体发生的频率大于1%,该替换称为单核苷酸多态性(SingleNucleotide Polymorphism,简称SNP)
+  - 插入：ATG=>ATCG
+  - 删除：ATG=>AG
+  - 倒位：ATG=>AGT
+
+- 替换类型
+  发生频率：转换>颠换
+  - 转换(Transition):嘌呤(A/G)间或嘧啶(T/C)间的替换
+  - 颠换(Transversion):嘌呤与嘧啶之间的替换
+
+![alt text](image-64.png)
+
+##### 点突变
+
+- 同义突变（synonymous/silent）：不改变编码氨基酸
+  TT**A** (Leu) <-> TT**G** (Leu)
+- 非同义突变（nonsynonymous）：改变编码的氨基酸
+  TT**A** (Leu) <-> TT**T** (Phe)
+- 无义突变（nonsense）：某一氨基酸的密码子变为终止密码子
+  T**T**A (Leu) <-> T**A**A (Stop)
+- 连读突变（read-through）：终止密码子变成某一氨基酸的密码子
+  T**A**A (Stop) <-> T**T**A (Leu)
+
+- 突变是生物进化的基本动力
+- 突变具有普遍性、随机性、低频性、可逆性等特点
+- 发生条件：细胞分裂时遗传基因的复制发生错误、或受化学物质、基因毒性、辐射或病毒的影响
+  - 自发突变（spontaneous mutation） ：在自然条件下，有机体由于与环境随机相互作用或偶然的复制错误而发生的突变
+  - 诱发突变（induced mutation）：使用诱变剂处理生物体而产生的突变
+- 每个基因都有积累突变的风险
+
+##### 突变：生殖细胞 vs 体细胞
+
+- 生殖细胞(germline)突变：发生在生殖细胞中的突变，可通过有性生殖遗传给后代，并存在于子代的每个细胞中。
+- 体细胞(somatic)突变：发生在体细胞中的突变，不会传递给子代，但可传递给由突变细胞分裂所形成的子细胞，在局部形成突变细胞群，可能成为病变甚至癌变的基础。
+
+##### 突变率
+
+![alt text](image-65.png)
 
 ## 基因组注释
+
+### 基因组注释的定义
+
+> **基因组测序完成 >> 基因组注释开始**
+
+#### 基因组注释（Genome annotation）
+
+- 定义：利用生物信息学方法和工具，对基因组所有基因的生物学功能进行高通量注释，是当前功能基因组学研究的一个热点。
+  - 结构注释（Structural annotation）：基因位置及其结构等
+  - 功能注释（Functional annotation）：基因功能及其调控等
+- 目的：识别基因组序列中存在的基因和其他多种功能元件（包括编码基因、非编码RNA、转座子等重复序列、调控元件等），并推测其生物学功能（例：ENCODE）。
+- 意义：基因组注释是生物学研究的基础，一个基因组的价值取决于该基因组注释的质量，基因组注释建立了从未知功能的基因组序列到该物种生物学研究的桥梁。
+
+> 识别基因组中编码基因、非编码基因及调控区域
+
+![alt text](image-66.png)
+
+### 基因组注释的复杂性：原核生物 vs 真核生物
+
+#### 基因结构
+
+![alt text](image-67.png)
+
+#### 原核生物基因组注释流程
+
+![alt text](image-68.png)
+
+#### 真核生物基因组注释流程
+
+![alt text](image-69.png)
+
+### 基因组结构注释
+
+#### 基因预测的方法
+
+- 湿性实验手段：通过实验分析，看其是否能表达基因产物；通量低、成本高
+- 干性实验预测：通过计算机对DNA序列进行特征搜寻，分析寻找基因；通量高、成本低（生物信息学）
+- 基于基因结构特征搜寻
+- 基于同源基因搜索
+
+##### 方法一：基于基因结构特征搜寻
+
+基因的核苷酸序列并非随机排列，而是具有明显特征，可基于开放读码框（Open reading frame, ORF）预测基因。
+![alt text](image-70.png)
+
+##### 方法二：基于同源基因搜索
+
+- 通过将数据库中的基因序列与待查的基因组序列进行比较，从中查找可与之匹配的碱基序列及其比例，用于界定基因的方法称为同源搜索。
+
+- 同源基因有以下几种情况：
+  - DNA序列某些片段完全相同
+  - ORF排列类似
+  - ORF翻译成的氨基酸序列相同
+  - 模拟多肽高级结构相似
+
+#### 原核生物编码基因预测
+
+- 原核生物基因的各种信号位点（如启动子和终止子信号位点）特异性较强且容易识别，因此相应的基因预测方法已经基本成熟。Prodigal和Glimmer是应用最为广泛的原核生物基因结构预测软件，准确度高。
+- 原理: 通过扫描基因组，找到从ATG (少数GTG、TTG)开始的位置，直到TGA、TAG、TAA。
+- 多顺反子：在原核细胞中，通常是几种不同的mRNA连在一起，位于同一转录单位内，相互之间由一段短的不编码蛋白质的间隔序列所隔开，享有同一对起点和终点。
+
+#### 原核生物编码基因预测软件
+
+- Glimmer：采用内插马尔科夫模型（IMM）来识别编码区域和非编码区域。一般使用三种方法创建训练模型（Delcher et al. 2007. PMID: 17237039）:
+  - 用亲缘关系很近的物种基因
+  - 用自身序列创建的ORF数据
+  - 用基因组本身的已知信息（常采用自身数据作为训练数据）
+- Prodigal：原核的动态编程基因查找算法，针对原核生物的基因预测工具，尤其是高GC的基因组，同时也适用于宏基因组（Hyatt et al. 2010. PMID: 20211023）
+- GeneMark：原理是使用统计学模型的从头预测(ab initio)方法，不依赖任何先验知识和经验参数，通过描述DNA序列中核苷酸的离散模型，利用编码区和非编码区的核苷酸分布概率不同来进行基因预测（Besemer, et al. 2001. PMID: 11410670）
+
+#### 真核生物基因组结构注释
+
+- Kozak序列是存在于真核生物mRNA的一段序列，位于mRNA 5’端帽子结构后面的一段核酸序列，通常是GCCRCCATGG，其在翻译的起始中有重要作用。
+- 起始密码子：ATG/GTG
+  - 第一个ATG的确定可依据Kozak规则，即第一个ATG侧翼序列的碱基分布所满足的统计规律，若将第一个ATG中的碱基A，T，G分别标为1，2，3位，则Kozak规则可描述如下：
+  1. 第4位的偏好碱基为G
+  2. ATG的5’端约15bp范围的侧翼序列内不含碱基T
+  3. 在-3，-6和-9位置，G是偏好碱基
+  4. 除-3，-6和-9位，在整个侧翼序列区，C是偏好碱基
+- 终止密码子：TAA，TAG，TGA
+  - GC%=50% 终止密码子每64bp出现一次
+  - GC%>50% 终止密码子每100-200bp出现一次
+    ![alt text](image-71.png)
+
+#### 重复序列
+
+重复序列可分为串联重复序列（Tandem repeat）和散在重复序列（Interspersed repeat）两大类：
+
+- 串联重复序列：微卫星序列、小卫星序列等
+- 散在重复序列：又称转座子元件TE
+  - DNA转座子
+  - 反转录转座子（retrotransposon)
+    - LTR
+    - LINE
+    - SINE
+
+#### 重复序列注释方法
+
+- 序列比对方法：一般采用Repeatmasker软件，识别与已知重复序列相似的序列，并对其进行分类。常用Repbase重复序列数据库。
+- 从头预测方法：利用重复序列或转座子自身的序列或结构特征构建从头预测算法或软件对序列进行识别。从头预测方法的优点在于能够根据转座子元件自身的结构特征进行预测，不依赖于已有的转座子数据库，能够发现未知的转座子元件。常见的从头预测方法有Recon、RepeatModeler等。
+
+#### 基于转录本注释基因结构
+
+PASA是一种真核生物基因组注释工具，它利用表达的转录序列的剪接排列来自动建模基因结构，并保持基因结构注释与测序数据一致。PASA还识别并分类了转录本比对支持的所有剪接变体。
+
+PASA的注释功能还包括：
+
+- 注释UTR区域
+- 外显子的添加、删除、边界调整
+- 增加可变剪接变体
+- 注释基因的ployA位点
+- 识别反义转录本
+- 识别并分类所有发现的剪接变异
+
+#### 三种方法的整合
+
+![alt text](image-72.png)
+
+### 基因组功能注释
+
+通过比对的方法根据已知功能的蛋白质编码基因序列预测未知蛋白质编码基因的功能。
+
+- 功能序列（Functional Motif Detection）
+- 基因本体（Gene Ontology Annotation）
+- 代谢通路（KEGG Enrichment Analysis）
+
+普遍采用BLAST比对方法对预测出来的编码基因进行功能注释，通过与各种功能数据库（NCBI nr、Swiss-Prot 等）进行蛋白质比对，获取该基因的功能信息。
+
+- Swiss-Prot是经过注释的蛋白质序列数据库，由欧洲生物信息学研究所（EBI） 维护。数据库由蛋白质序列条目构成，每个条目包含蛋白质序列、引用文献信息、分类学信息、注释等。
+- NCBI nr 是非冗余的蛋白序列数据库，主要数据来源为GenBank CDS translations+PDB+SwissProt+PIR+PRF。
+
+#### 本体论（Ontology）
+
+- Ontology 是特定领域信息组织的一种形式，是领域知识规范的抽象和描述，是表达、共享、重用知识的方法。
+- Ontology 是知识体系构建的关键技术，知识图谱是一种人工智能技术，它的关键在于让计算机能够处理人类的知识。然而，人类脑海中的知识通常是直觉性的，我们无法将这种直觉性的知识直接输入给计算机，Ontology 就是一种对知识建模，使计算机能够识别人类知识的方法。
+- 本体（Ontology）通过对于概念（Concept）、术语（Terminology）及其相互关系（Relation, Property）的规范化（Conceptualization）描述，勾画出某一领域的基本知识体系和描述语言。
+
+#### 基因本体（Gene Ontology）
+
+基因本体（Gene Ontology，简称GO）是一种系统地对物种基因及其产物属性进行注释的方法和过程。基因本体知识库是世界上最大的基因功能信息资源。这些知识既是人类可读的，又是机器可读的，是生物医学研究中大规模分子生物学和遗传学实验的计算分析的基础。其目标是:
+
+- 维护和发展基因及其产物属性描述的词汇；
+- 注释基因及其产物，传播注释数据；
+- 提供方便的工具访问数据；
+- 实现在实验数据的基础上，使用GO进行程式解析，例如基因富集组分分析。
+  > http://geneontology.org
+
+#### GO的组成
+
+- GO中最基本的概念是term
+- GO里的每条记录(entry) 都有一个唯一的编号GO:NNNNNNN，对应一个term，比如“cell”、“DNA binding”、“signal transduction”
+- 每个term属于一个ontology，总共有3个ontology：
+  1. 分子功能（Molecular Function）
+     由基因产物进行的分子水平的活动。分子功能术语描述在分子水平上发生的活动，如“催化”或“运输”。
+  2. 细胞组件（Cellular Component）
+     细胞的组成（如线粒体）或稳定的大分子复合物（如核糖体）。
+  3. 生物过程（Biological Process）
+     由多个分子活动完成的过程，例如：DNA修复、信号转导。
+     注意，一个生物过程并不等同于一个途径
+
+#### KEGG (Kyoto Encyclopedia of Genes and Genomes)代谢路径数据库
+
+是一组手工绘制的图形图，称为KEGG路径图，表示代谢、遗传信息处理、环境信息处理、细胞过程、组织系统、人类疾病和药物开发的分子路径。KEGG中存在三大类代谢图，每个数据路的pathway都有相应的唯一编号。
+
+- reference pathway：根据已有的知识绘制的的具有一般参考意义的代谢图。通路图中的小框都是白色，在KEGG中名字以map开头，比map00010。
+- species-specific pathway：物种特有代谢通路图。绿色小框为该物种特有的基因或酶。名字为特定物种种属英文缩写，比如人的糖酵解通路图hsa00010。
+- 以ko/ec/rn开头的Reference pathway：ko通路中的节点只代表基因；ec通路中的节点只代表相关的酶；rn通路中的节点只表示该点参与的某个反应、反应物及反应类型。底色以蓝色表示。
+
+![alt text](image-73.png)
+
+#### 基因功能富集
+
+##### GO/KEGG富集分析
+
+由于GO/KEGG中每种功能类别/代谢途径中的背景基因数量不同，因此基因的绝对数量不能用来衡量基因在某种类别中的富集程度，需要通过统计算法来进行富集分析。
+
+##### DAVID Bioinformatics Resources
+
+![alt text](image-74.png)
